@@ -1,0 +1,1 @@
+//rr : ra and rb at the same time.
