@@ -9,12 +9,12 @@
 /*   Updated: 2024/11/13 09:36:22 by anel-men         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (lst == NULL || new == NULL)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}
+
+// void	ft_lstadd_front(t_list **lst, t_list *new)
+// {
+// 	if (lst == NULL || new == NULL)
+// 		return ;
+// 	new->next = *lst;
+// 	*lst = new;
+// }

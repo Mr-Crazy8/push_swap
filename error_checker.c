@@ -1,16 +1,5 @@
 #include <libc.h>
-int len_of_argemont(char *argv[]);
-void error_checker(char *argv[]);
-static char	*add(char const *s1, char const *s2);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-static char	**free_split(char **split, size_t j);
-static size_t	count_words(char const *s, char c);
-static char	**split_string(char const *s, char c, char **split, size_t n);
-long ft_atoi(char *str);
-int ft_strlen(const char *str);
-int ft_strcmp(char *s1, char *s2);
-char	*ft_strdup(const char *s);
+#include "push_swap.h"
 
 static char	*add(char const *s1, char const *s2)
 {
@@ -277,29 +266,6 @@ int all_number_cheker(char *str[])
 
 
 
-// int check_dup(char *str[]) 
-// {
-//     int i = 0;
-//     int j;
-    
-//     // Loop through each string
-//     while (str[i])
-//     {
-//         j = i + 1;
-//         // Compare with all subsequent strings
-//         while (str[j])
-//         {
-//             // If a duplicate is found, return 0 immediately
-//             if (ft_strcmp(str[i], str[j]) == 0)
-//                 return 0;
-//             j++;
-//         }
-//         i++;
-//     }
-//     // No duplicates found
-//     return 1;
-// }
-
 int duplicate(char *str[]) 
 {
     int i = 0;
@@ -316,7 +282,7 @@ int duplicate(char *str[])
         }
         i++;
     }
-	printf("count is : %d\n", count);
+	// printf("count is : %d\n", count);
     if(count == 0)
         return(1);
     return(0); 
@@ -329,28 +295,9 @@ void error_checker(char *argv[])
 	else
 		printf("good\n");
 }
-// void input_checker(int argc, char *argv[])
-// {
-// 	int i = 1;
-// 	int j;
-// 	if (argc >= 2)
-// 	{
-// 		j = i + 1;
-// 		while(i < argc)
-// 		{
-// 			argv[i] = ft_strjoin(ft_strjoin(argv[i], " "), argv[j]);
-// 			i++;
-// 		}
-// 		printf("%s\n", argv[1]);
-// 		char **result = ft_split(argv[1], ' ');
-// 		i = 0;
-		
-// 			// printf("%s\n", result[0]);
-// 			// printf("%s\n", result[1]);
-// 			// printf("%s\n", result[2]);
-// 		//error_checker((ft_split(argv[1], ' ')));
-// 	}
-// }
+
+
+
 
 void input_checker(int argc, char *argv[])
 {
@@ -391,14 +338,6 @@ void input_checker(int argc, char *argv[])
     }
 }
 
-
-int main(int argc, char *argv[])
-{
-	int i = 0;
-	input_checker(argc, argv);
-	system("leaks a.out");
-	
-}
 
 
 
