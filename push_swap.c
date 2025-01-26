@@ -91,9 +91,9 @@ int range_finder(t_stack *head)
 	size = ft_list_size(head);
 
 	if (size > 100)
-		range = 42;
-	if (size <= 100)
-		range = 15;
+		range = 39;
+	else if (size <= 100)
+		range = 11;
 	return range;
 }
 
@@ -170,48 +170,45 @@ int check_if_top(t_stack *stack_b, int index)
 
 
 
-void final_sort(t_stack *stack_b, t_stack *stack_a)
+void final_sort(t_stack **stack_b, t_stack **stack_a)
 {
-    int lent = ft_list_size(stack_b);
+    int lent = ft_list_size((*stack_b));
     int i = 1;
 	while (lent > 0)
 	{
-		if (check_if_top(stack_b, (lent - i)) == 1)
-        {
-			pa(&stack_b, &stack_a);
- 			write(1, "pa\n", 3);
-        }
-		else if (check_if_last(stack_b, (lent - i)) == 1)
+		int last_max = from_last_to_max((*stack_b), (lent - i));
+		int top_max = from_top_to_max((*stack_b), (lent - i));
+
+		if (last_max <= top_max)
 		{
-			rrb(&stack_b);
- 			write(1, "rrb\n", 4);
- 			pa(&stack_b, &stack_a);
-            write(1, "pa\n", 3);
-		}
-		else if (from_last_to_max(stack_b, (lent - i)) > from_top_to_max(stack_b, (lent - i)))
-		{
-			while (check_if_top(stack_b, (lent - i)) != 1)
+			while (check_if_top((*stack_b), (lent - i)) != 1)
             {
-				rb(&stack_b);
-                write(1, "rb\n", 3);
-            }
-            pa(&stack_b, &stack_a);
-            write(1, "pa\n", 3);
-		}
-		else if (from_last_to_max(stack_b, (lent - i)) <= from_top_to_max(stack_b, (lent - i)))
-		{
-			while (check_if_top(stack_b, (lent - i)) != 1)
-            {
-				rrb(&stack_b);
+				rrb(stack_b);
  				write(1, "rrb\n", 4);
             }
-		    pa(&stack_b, &stack_a);
+		    pa(stack_b, stack_a);
             write(1, "pa\n", 3);
 		}
-        // printf("here========================\n");
+		else  
+		{
+			while (check_if_top((*stack_b), (lent - i)) != 1)
+            {
+				rb(stack_b);
+                write(1, "rb\n", 3);
+            }
+            pa(stack_b, stack_a);
+            write(1, "pa\n", 3);
+		}
         lent--;
 	}
+	
 }
+
+
+// void ff()
+// {
+// 	system("leaks a.out");
+// }
 int main(int argc, char *argv[])
 {
 	int i = 1;
@@ -257,6 +254,7 @@ int main(int argc, char *argv[])
 				    write(1, "rb\n", 3);
                 }
 				i++;
+				
 			}
 		else
 		{
@@ -266,10 +264,26 @@ int main(int argc, char *argv[])
         // stack_a = stack_a->next;
 		//lent--;
 	}
-	final_sort(stack_b, stack_a);
+	final_sort(&stack_b, &stack_a);
+	// while (stack_a)
+	// {
+	// 	printf("___{%d}___", stack_a->data);
+	// 	stack_a = stack_a->next;
+	// }
+
+
+	t_stack *tmp = stack_a;
+	t_stack *tmp2;
+
+	while (tmp)
+	{
+		tmp2 = tmp;
+		free(tmp2);
+		tmp = tmp->next;
+	}
+
             //printf("here========================");
-
-
+	// atexit(ff);
 	//printf("%d", find_max(stack_b));
 }
 

@@ -297,7 +297,20 @@ void error_checker(char *argv[])
 }
 
 
-
+// int empty_string_checker(char *argv[])
+// {
+// 	int i = 0;
+// 	int j = 0;
+// 	int r = 0;
+// 	if (argv[i] == (void *)0)
+//         return (1);
+// 	while (argv)
+//     while (argv[i][j] == 32)
+//         j++;
+//     if (argv[i][j] == '\0')
+//         return (1);
+//     i++;
+// }
 
 void input_checker(int argc, char *argv[])
 {
