@@ -1,16 +1,32 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   util2.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anel-men <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 16:01:09 by anel-men          #+#    #+#             */
-/*   Updated: 2025/01/27 16:01:12 by anel-men         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "push_swap_bonus.h"
 
-#include "push_swap.h"
+long	ft_atoi(char *str)
+{
+	int		i;
+	int		signe;
+	long	res;
+
+	i = 0;
+	signe = 1;
+	res = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			signe *= -1;
+		i++;
+	}
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
+	if (str[i] && (str[i] < '0' || str[i] > '9'))
+		return (LONG_MAX);
+	return (res * signe);
+}
+
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -95,4 +111,19 @@ char	**ft_split(char const *s, char c)
 	if (split == NULL)
 		return (NULL);
 	return (split_string(s, c, split, n));
+}
+
+int	ft_list_size(t_stack *stack_a)
+{
+	t_stack	*lst;
+	int		i;
+
+	lst = stack_a;
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
